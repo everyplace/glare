@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Accelerometer Demo</title>
+		<script src="../jquery-latest.js"></script>
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<script>
+			$(document).ready(function(){
+				
+				$(window).on("devicemotion", function(error){
+
+	
+
+			                   
+			        var backgroundPositionXOffset = ((event.accelerationIncludingGravity.x + 10)/20).toString().substring(0,4);
+			        var backgroundPositionXOffsetSqrt = Math.sqrt(((event.accelerationIncludingGravity.x + 10)/20)).toString().substring(0,4);
+			        var backgroundPositionYOffset = ((event.accelerationIncludingGravity.y + 10)/20).toString().substring(0,4);
+			        var backgroundPositionYOffsetSqrt = Math.sqrt(((event.accelerationIncludingGravity.y + 10)/20)).toString().substring(0,4);
+
+			        var x = backgroundPositionXOffset;
+			       	var modifiedX = (4 * x * x * x) - (6 * x * x) + (3 * x);
+			        var y = backgroundPositionYOffset;
+			       	var modifiedY = (4 * y * y * y) - (6 * y * y) + (3 * y);
+
+			       	//var modifiedX = (((x * 2) - 1) * Math.square(((x * 2) - 1)) + 1)/2;
+
+			        var rgbString = "0,0,0";
+
+			        $('body').css(
+			        	{
+			        		'-webkitMaskImage': "-webkit-gradient(linear, left top, left bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedY+", rgba("+rgbString+",.75)), color-stop(1, rgba("+rgbString+",0))),-webkit-gradient(linear, left bottom, right bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedX+", rgba("+rgbString+",1)), color-stop(1, rgba("+rgbString+",0)))"
+			        	}
+			        );
+
+			        $("#counter").html("x offset:"+backgroundPositionXOffset+", y offset:"+backgroundPositionYOffset);
+
+
+			        $("#cube").html(modifiedX);
+			        	
+
+
+
+				});
+
+			});
+		</script>
+		<style>
+			* {
+				margin:0;
+				padding:0;
+			}
+			html{
+				min-height:100%;
+			}
+
+			body {
+				
+				width:320px;
+				height:100%;
+
+			}
+
+		</style>
+	</head>
+	<body>
+
+		<h2 id="counter">0</h2>
+		<h2 id="cube">0</h2>
+
+<!-- 		<img src="erin.jpg" width="320" height="auto"/>
+ -->		<div style="width:320px; height:480px; background-color:red"> </div>
+	</body>
+</html>
