@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Accelerometer Demo</title>
-		<script src="../jquery-latest.js"></script>
+		<script src="jquery-latest.js"></script>
 		<meta name="viewport" content="width=device-width, user-scalable=no" />
 		<script>
 			$(document).ready(function(){
@@ -19,10 +19,11 @@
 
 			        var x = backgroundPositionXOffset;
 			       	var modifiedX = (4 * x * x * x) - (6 * x * x) + (3 * x);
-			        var y = backgroundPositionYOffset;
-			       	var modifiedY = (4 * y * y * y) - (6 * y * y) + (3 * y);
-
 			       	//var modifiedX = (((x * 2) - 1) * Math.square(((x * 2) - 1)) + 1)/2;
+
+			        var y = backgroundPositionYOffset;
+			       	// var modifiedY = (4 * y * y * y) - (6 * y * y) + (3 * y);
+			       	var modifiedY = y;
 
 			        var rgbString = "0,0,0";
 
@@ -45,13 +46,9 @@
 			});
 		</script>
 		<style>
-			* {
-				margin:0;
-				padding:0;
-			}
-			html{
-				min-height:100%;
-			}
+			
+			* {	margin:0; padding:0; }
+			html{ min-height:100%; }
 
 			body {
 				
@@ -67,7 +64,7 @@
 		<h2 id="counter">0</h2>
 		<h2 id="cube">0</h2>
 
-<!-- 		<img src="erin.jpg" width="320" height="auto"/>
- -->		<div style="width:320px; height:480px; background-color:red"> </div>
+		<!-- <img src="erin.jpg" width="320" height="auto"/> -->
+		<div style="width:320px; height:480px; background-color:red"> </div>
 	</body>
 </html>
