@@ -4,26 +4,12 @@
 		<title>Accelerometer Demo</title>
 		<script src="jquery-latest.js"></script>
 		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<script src="scripts.js"></script>
 		<script>
 			$(document).ready(function(){
-				
-				//http://gotochriswest.com/blog/2011/05/06/cube-root-an-beyond/
-				var nthroot = function (x, n) {
-				  try {
-				    var negate = n % 2 == 1 && x < 0;
-				    if(negate)
-				      x = -x;
-				    var possible = Math.pow(x, 1 / n);
-				    n = Math.pow(possible, n);
-				    if(Math.abs(x - n) < 1 && (x > 0 == n > 0))
-				      return negate ? -possible : possible;
-				  } catch(e){}
-				};
+
 
 				$(window).on("devicemotion", function(error){
-
-	
-
 			                   
 			        var backgroundPositionXOffset = ((event.accelerationIncludingGravity.x + 10)/20).toString().substring(0,4);
 			        var backgroundPositionXOffsetSqrt = Math.sqrt(((event.accelerationIncludingGravity.x + 10)/20)).toString().substring(0,4);
