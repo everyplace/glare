@@ -51,19 +51,35 @@
 					;
 
 					var modifiedXa = modifiedX;
-					var modifiedXb = modifiedXa - ((2 * modifiedXa) / 3) * (1 - modifiedXa);
-					var modifiedXc = modifiedXa + ((2 * modifiedXa) / 3) * (1 - modifiedXa);
+					var modifiedXb = modifiedXa - ((3 * modifiedXa) / 3) * (1 - modifiedXa);
+					var modifiedXc = modifiedXa + ((3 * modifiedXa) / 3) * (1 - modifiedXa);
 
 
 					var modifiedYa = modifiedY;
-					var modifiedYb = modifiedYa - ((2 * modifiedYa) / 3) * (1 - modifiedYa);
-					var modifiedYc = modifiedYa + ((2 * modifiedYa) / 3) * (1 - modifiedYa);
+					var modifiedYb = modifiedYa - ((3 * modifiedYa) / 3) * (1 - modifiedYa);
+					var modifiedYc = modifiedYa + ((3 * modifiedYa) / 3) * (1 - modifiedYa);
+
+
+
+					if(modifiedXb < 0) {
+						modifiedXb = 0;
+					}
+					if(modifiedXc > 1) {
+						modifiedXc = 1;
+					}					
+
+					if(modifiedYb < 0) {
+						modifiedYb = 0;
+					}
+					if(modifiedYc > 1) {
+						modifiedYc = 1;
+					}
 
 
 
 
 			        var rgbString = "0,0,0";
-			        var stopAlpha = ".25";
+			        var stopAlpha = ".15";
 
 			        $('body').css(
 			        	{
@@ -77,7 +93,10 @@
 			        $("#data").html(
 			        	"x-axis: " + modifiedX + "<br />" +
 			        	"y-axis: " + modifiedY + "<br />" +
-			        	"z-axis: " + backgroundPositionZOffset + "<br />"
+			        	"z-axis: " + backgroundPositionZOffset + "<br />" +
+			        	"yb: " + modifiedYb + "<br />" +
+			        	"ya: " + modifiedYa + "<br />" +
+			        	"yc: " + modifiedYc + "<br />"
 			        );
 			        	
 
