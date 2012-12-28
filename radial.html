@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Accelerometer Demo</title>
+		<script src="jquery-latest.js"></script>
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<script src="scripts.js"></script>
+		<script>
+			$(document).ready(function(){
+
+						var width = $("body").width() /2;
+						$("#circle").css({
+							width: width + "px",
+							height: width + "px"
+						});
+
+			});
+		</script>
+		<style>
+			
+			* {	margin:0; padding:0; }
+			html{ min-height:100%; }
+
+			body {
+				
+				background-color:red;
+
+			}
+
+			#circle {
+				background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 65%,rgba(0,0,0,0) 100%);	}
+
+		</style>
+	</head>
+	<body>
+
+		<div id="circle"></div>
+
+	</body>
+</html>
