@@ -8,12 +8,18 @@
 		<script>
 			$(document).ready(function(){
 
+				var a = .05;
+				var b = a - ((2 * a) / 3) * (1 - a);
+				var c = a + ((2 * a) / 3) * (1 - a);
+
+				console.log(b, a, c);
+
 				$(window).on("devicemotion", function(error){
 			                   
 			        var backgroundPositionXOffset = ((event.accelerationIncludingGravity.x + 10)/20).toString().substring(0,4);
-			        var backgroundPositionXOffsetSqrt = Math.sqrt(((event.accelerationIncludingGravity.x + 10)/20)).toString().substring(0,4);
 			        var backgroundPositionYOffset = ((event.accelerationIncludingGravity.y + 10)/20).toString().substring(0,4);
-			        var backgroundPositionYOffsetSqrt = Math.sqrt(((event.accelerationIncludingGravity.y + 10)/20)).toString().substring(0,4);
+			        var backgroundPositionZOffset = (((event.accelerationIncludingGravity.z + 10)/20) * 100).toString().substring(0,4);
+
 
 			        var x = backgroundPositionXOffset;
 			       	var modifiedX = (4 * x * x * x) - (6 * x * x) + (3 * x);
@@ -60,10 +66,14 @@
 			        	}
 			        );
 
-			        $("#counter").html("x offset:"+backgroundPositionXOffset+", y offset:"+backgroundPositionYOffset);
+			        // $("#counter").html("x offset:"+backgroundPositionXOffset+", y offset:"+backgroundPositionYOffset);
 
 
-			        $("#cube").html(modifiedY);
+			        $("#data").html(
+			        	"x-axis: " + modifiedX + "<br />" +
+			        	"y-axis: " + modifiedY + "<br />" +
+			        	"z-axis: " + backgroundPositionZOffset + "<br />"
+			        );
 			        	
 
 				});
@@ -86,8 +96,7 @@
 	</head>
 	<body>
 
-		<h2 id="counter">0</h2>
-		<h2 id="cube">0</h2>
+		<div id="data">0</div>
 
 		<img src="beautyshop.jpg" width="320" height="auto"/>
 		<div style="width:320px; height:480px; background-color:red"> </div>
