@@ -14,7 +14,7 @@
 			        var backgroundPositionYOffset = ((event.accelerationIncludingGravity.y + 10)/20).toString().substring(0,4);
 			        var backgroundPositionZOffset = (((event.accelerationIncludingGravity.z + 10)/20) * 100).toString().substring(0,4);
 
-			        
+
 
 
 			        var x = backgroundPositionXOffset;
@@ -83,14 +83,17 @@
 			        var rgbString = "0,0,0";
 			        var stopAlpha = ".15";
 
+			        var width = $("body").width();
+			        var height = $("body").height();
+			        var intersectionX = width * modifiedX;
+			        var intersectionY = height * modifiedY;
+
+
 			        $('body').css(
 			        	{
-			        		'-webkitMaskImage': "-webkit-gradient(linear, left top, left bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedYb+", rgba("+rgbString+","+stopAlpha+")), color-stop("+modifiedYa+", rgba("+rgbString+",1)), color-stop("+modifiedYc+", rgba("+rgbString+","+stopAlpha+")), color-stop(1, rgba("+rgbString+",0))),-webkit-gradient(linear, left bottom, right bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedXb+", rgba("+rgbString+","+stopAlpha+")), color-stop("+modifiedX+", rgba("+rgbString+",1)), color-stop("+modifiedXc+", rgba("+rgbString+","+stopAlpha+")), color-stop(1, rgba("+rgbString+",0)))"
+			        		'-webkitMaskImage': "-webkit-gradient(linear, left top, left bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedYb+", rgba("+rgbString+","+stopAlpha+")), color-stop("+modifiedYa+", rgba("+rgbString+",1)), color-stop("+modifiedYc+", rgba("+rgbString+","+stopAlpha+")), color-stop(1, rgba("+rgbString+",0))),-webkit-gradient(linear, left bottom, right bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedXb+", rgba("+rgbString+","+stopAlpha+")), color-stop("+modifiedX+", rgba("+rgbString+",1)), color-stop("+modifiedXc+", rgba("+rgbString+","+stopAlpha+")), color-stop(1, rgba("+rgbString+",0))), -webkit-radial-gradient("+intersectionX+"px "+intersectionY+"px, ellipse cover, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 85%,rgba(0,0,0,0) 100%)"
 			        	}
 			        );
-
-			        // $("#counter").html("x offset:"+backgroundPositionXOffset+", y offset:"+backgroundPositionYOffset);
-
 
 			        $("#data").html(
 			        	"x-axis: " + modifiedX + "<br />" +
@@ -100,6 +103,8 @@
 			        	"ya: " + modifiedYa + "<br />" +
 			        	"yc: " + modifiedYc + "<br />"
 			        );
+
+
 			        	
 
 				});
@@ -114,7 +119,7 @@
 			body {
 				
 				background-color:red;
-
+				min-height:480px;
 			}
 
 		</style>
@@ -123,7 +128,9 @@
 
 		<div id="data">0</div>
 
-		<img src="beautyshop.jpg" width="320" height="auto"/>
+		<img src="beautyshop.jpg" width="320" height="auto"/> 
 		<div style="width:320px; height:480px; background-color:white"> </div>
+		<div id="track"></div>
+
 	</body>
 </html>
