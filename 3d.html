@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Accelerometer 3D Demo</title>
+		<script src="jquery-latest.js"></script>
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<script>
+			$(document).ready(function(){
+				
+				$(window).on("devicemotion", function(error){
+			        
+			        var backgroundPositionXOffset = (((event.accelerationIncludingGravity.x + 10)/20) * 100).toString().substring(0,4);
+			        var backgroundPositionYOffset = (((event.accelerationIncludingGravity.y + 10)/20) * 100).toString().substring(0,4);
+			        var backgroundPositionZOffset = (((event.accelerationIncludingGravity.z + 10)/20) * 100).toString().substring(0,4);
+
+
+			        $("#placeholder").html(
+			        	"x-axis: " + backgroundPositionXOffset + "<br />" +
+			        	"y-axis: " + backgroundPositionYOffset + "<br />" +
+			        	"z-axis: " + backgroundPositionZOffset + "<br />"
+			        );
+			        $("#placeholder").css({
+       					"-webkitTransform": "perspective(320px) rotate3d(1,0,0, "+(backgroundPositionZOffset * (18/10))+"deg)"
+			        });	
+
+			     });
+
+			});
+		</script>
+		<style>
+			
+			* {	margin:0; padding:0; }
+			html{ min-height:100%; }
+
+			body {
+				
+				width:320px;
+				height:100%;
+
+			}
+
+			#placeholder {
+				position:absolute;
+				top:0;
+				left:0;
+				text-align: center;
+				width:320px;
+				height:320px;
+				background-color:red;
+				-webkit-transition:-webkit-transform .1s;
+				-webkit-transform-origin:0 0 50%;
+				/*-webkit-transform: perspective(320px) translate3d(0,0,120px) rotate3d(1,0,0, 45deg); /* Safari and Chrome */*/
+			}
+
+		</style>
+	</head>
+	<body>
+
+		<h2 id="counter">0</h2>
+		<h2 id="placeholder">0</h2>
+
+		<img src="beautyshop.jpg" width="320" height="auto"/>
+	</body>
+</html>
