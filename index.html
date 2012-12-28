@@ -11,6 +11,7 @@
 				$(window).on("devicemotion", function(error){
 			                   
 			        var backgroundPositionXOffset = ((event.accelerationIncludingGravity.x + 10)/20).toString().substring(0,4);
+			        	backgroundPositionXOffset = 1 - backgroundPositionXOffset;
 			        var backgroundPositionYOffset = ((event.accelerationIncludingGravity.y + 10)/20).toString().substring(0,4);
 			        var backgroundPositionZOffset = (((event.accelerationIncludingGravity.z + 10)/20) * 100).toString().substring(0,4);
 
