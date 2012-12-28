@@ -6,7 +6,13 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no" />
 		<script>
 			$(document).ready(function(){
-				
+		
+
+
+		        $("#placeholder").css({
+   					"-webkitTransform": "perspective(320px) rotate3d(1,0,0, 45deg)"
+		        });
+
 				$(window).on("devicemotion", function(error){
 			        
 			        var backgroundPositionXOffset = (((event.accelerationIncludingGravity.x + 10)/20) * 100).toString().substring(0,4);
@@ -48,7 +54,7 @@
 				height:320px;
 				background-color:red;
 				-webkit-transition:-webkit-transform .1s;
-				-webkit-transform-origin:0 0 50%;
+				-webkit-transform-origin:0 0 0;
 				/*-webkit-transform: perspective(320px) translate3d(0,0,120px) rotate3d(1,0,0, 45deg); /* Safari and Chrome */*/
 			}
 
