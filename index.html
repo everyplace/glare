@@ -8,12 +8,6 @@
 		<script>
 			$(document).ready(function(){
 
-				var a = .05;
-				var b = a - ((2 * a) / 3) * (1 - a);
-				var c = a + ((2 * a) / 3) * (1 - a);
-
-				console.log(b, a, c);
-
 				$(window).on("devicemotion", function(error){
 			                   
 			        var backgroundPositionXOffset = ((event.accelerationIncludingGravity.x + 10)/20).toString().substring(0,4);
@@ -56,13 +50,24 @@
 
 					;
 
+					var modifiedXa = modifiedX;
+					var modifiedXb = modifiedXa - ((2 * modifiedXa) / 3) * (1 - modifiedXa);
+					var modifiedXc = modifiedXa + ((2 * modifiedXa) / 3) * (1 - modifiedXa);
+
+
+					var modifiedYa = modifiedY;
+					var modifiedYb = modifiedYa - ((2 * modifiedYa) / 3) * (1 - modifiedYa);
+					var modifiedYc = modifiedYa + ((2 * modifiedYa) / 3) * (1 - modifiedYa);
+
+
 
 
 			        var rgbString = "0,0,0";
+			        var stopAlpha = ".25";
 
 			        $('body').css(
 			        	{
-			        		'-webkitMaskImage': "-webkit-gradient(linear, left top, left bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedY+", rgba("+rgbString+",1)), color-stop(1, rgba("+rgbString+",0))),-webkit-gradient(linear, left bottom, right bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedX+", rgba("+rgbString+",1)), color-stop(1, rgba("+rgbString+",0)))"
+			        		'-webkitMaskImage': "-webkit-gradient(linear, left top, left bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedYb+", rgba("+rgbString+","+stopAlpha+")), color-stop("+modifiedYa+", rgba("+rgbString+",1)), color-stop("+modifiedYc+", rgba("+rgbString+","+stopAlpha+")), color-stop(1, rgba("+rgbString+",0))),-webkit-gradient(linear, left bottom, right bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedXb+", rgba("+rgbString+","+stopAlpha+")), color-stop("+modifiedX+", rgba("+rgbString+",1)), color-stop("+modifiedXc+", rgba("+rgbString+","+stopAlpha+")), color-stop(1, rgba("+rgbString+",0)))"
 			        	}
 			        );
 
@@ -88,7 +93,6 @@
 			body {
 				
 				background-color:red;
-				-webkit-transition: -webkit-mask-image 2s;
 
 			}
 
@@ -99,6 +103,6 @@
 		<div id="data">0</div>
 
 		<img src="beautyshop.jpg" width="320" height="auto"/>
-		<div style="width:320px; height:480px; background-color:red"> </div>
+		<div style="width:320px; height:480px; background-color:white"> </div>
 	</body>
 </html>
