@@ -57,42 +57,39 @@
 					var modifiedXb = modifiedXa - ((3 * modifiedXa) / 3) * (1 - modifiedXa);
 					var modifiedXc = modifiedXa + ((3 * modifiedXa) / 3) * (1 - modifiedXa);
 
-
 					var modifiedYa = modifiedY;
 					var modifiedYb = modifiedYa - ((3 * modifiedYa) / 3) * (1 - modifiedYa);
 					var modifiedYc = modifiedYa + ((3 * modifiedYa) / 3) * (1 - modifiedYa);
 
-
-
-					if(modifiedXb < 0) {
-						modifiedXb = 0;
-					}
-					if(modifiedXc > 1) {
-						modifiedXc = 1;
-					}					
-
-					if(modifiedYb < 0) {
-						modifiedYb = 0;
-					}
-					if(modifiedYc > 1) {
-						modifiedYc = 1;
-					}
-
+					//eliminate extreme errant values of greater than 1 or less than 0 values
+					modifiedXb = (modifiedXb < 0) ? 0 : modifiedXb;
+					modifiedXc = (modifiedXc > 1) ? 1 : modifiedXc;
+					modifiedYb = (modifiedYb < 0) ? 0 : modifiedYb;
+					modifiedYc = (modifiedYc > 1) ? 1 : modifiedYc;
+					
 
 
 
 			        var rgbString = "0,0,0";
 			        var stopAlpha = ".15";
 
-			        var width = $("body").width();
-			        var height = $("body").height();
+			        var width = $(window).width();
+			        var height = $(window).height();
 			        var intersectionX = width * modifiedX;
 			        var intersectionY = height * modifiedY;
+			        var stopRadialPercentage = modifiedX * 100;
+
+
+			        if(stopRadialPercentage > 50) {
+			        	stopRadialPercentage = 100 - stopRadialPercentage;
+			        }
+
+
 
 
 			        $('body').css(
 			        	{
-			        		'-webkitMaskImage': "-webkit-gradient(linear, left top, left bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedYb+", rgba("+rgbString+","+stopAlpha+")), color-stop("+modifiedYa+", rgba("+rgbString+",1)), color-stop("+modifiedYc+", rgba("+rgbString+","+stopAlpha+")), color-stop(1, rgba("+rgbString+",0))),-webkit-gradient(linear, left bottom, right bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedXb+", rgba("+rgbString+","+stopAlpha+")), color-stop("+modifiedX+", rgba("+rgbString+",1)), color-stop("+modifiedXc+", rgba("+rgbString+","+stopAlpha+")), color-stop(1, rgba("+rgbString+",0))), -webkit-radial-gradient("+intersectionX+"px "+intersectionY+"px, ellipse cover, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 85%,rgba(0,0,0,0) 100%)"
+			        		'-webkitMaskImage': "-webkit-gradient(linear, left top, left bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedYb+", rgba("+rgbString+","+stopAlpha+")), color-stop("+modifiedYa+", rgba("+rgbString+",1)), color-stop("+modifiedYc+", rgba("+rgbString+","+stopAlpha+")), color-stop(1, rgba("+rgbString+",0))),-webkit-gradient(linear, left bottom, right bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedXb+", rgba("+rgbString+","+stopAlpha+")), color-stop("+modifiedX+", rgba("+rgbString+",1)), color-stop("+modifiedXc+", rgba("+rgbString+","+stopAlpha+")), color-stop(1, rgba("+rgbString+",0))), -webkit-radial-gradient("+intersectionX+"px "+intersectionY+"px, ellipse cover, rgba(0,0,0,1) 0%,rgba(0,0,0,0) "+stopRadialPercentage+"%,rgba(0,0,0,0) 95%, rgba(255,255,255,1) 100%)"
 			        	}
 			        );
 
@@ -102,7 +99,8 @@
 			        	"z-axis: " + backgroundPositionZOffset + "<br />" +
 			        	"yb: " + modifiedYb + "<br />" +
 			        	"ya: " + modifiedYa + "<br />" +
-			        	"yc: " + modifiedYc + "<br />"
+			        	"yc: " + modifiedYc + "<br />" +
+			        	"intX: " + stopRadialPercentage
 			        );
 
 
@@ -115,22 +113,24 @@
 		<style>
 			
 			* {	margin:0; padding:0; }
-			html{ min-height:100%; }
+			html{ min-height:100%; background-color:red; }
 
 			body {
 				
-				background-color:red;
-				min-height:480px;
+				background-color:white;
+				min-height:1280px;
 			}
 
+			#data {
+				background-color:white;
+			}
 		</style>
 	</head>
 	<body>
 
-		<div id="data">0</div>
+		<div id="data" >0</div>
 
 		<img src="beautyshop.jpg" width="320" height="auto"/> 
-		<div style="width:320px; height:480px; background-color:white"> </div>
 		<div id="track"></div>
 
 	</body>
