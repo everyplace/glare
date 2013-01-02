@@ -1,10 +1,13 @@
 (function($){
 
-	$.fn.glare = function() {
+	$.fn.glare = function(options) {
 	
         var width = $(window).width();
         var height = $(window).height();
-        $("#data").html("width:" + width);
+
+		var settings = $.extend( {
+			debug:false
+		}, options);
 
         $(window).on("devicemotion", function(error){
 	                   
@@ -68,14 +71,16 @@
 	        );
 
 	        //output some debug information
-	        $("#data").html(
-	        	"x-axis: " + modifiedX + "<br />" +
-	        	"y-axis: " + modifiedY + "<br />" +
-	        	"z-axis: " + backgroundPositionZOffset + "<br />" +
-	        	"yb: " + modifiedYb + "<br />" +
-	        	"ya: " + modifiedYa + "<br />" +
-	        	"yc: " + modifiedYc + "<br />"
-	        );
+	        if(settings.debug === true) {
+		        $("#data").html(
+		        	"x-axis: " + modifiedX + "<br />" +
+		        	"y-axis: " + modifiedY + "<br />" +
+		        	"z-axis: " + backgroundPositionZOffset + "<br />" +
+		        	"yb: " + modifiedYb + "<br />" +
+		        	"ya: " + modifiedYa + "<br />" +
+		        	"yc: " + modifiedYc + "<br />"
+		        );
+		    }
 
 		});
 		
