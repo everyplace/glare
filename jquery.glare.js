@@ -19,14 +19,14 @@
 	        //make it so that the x axis tends towards the center
 	        var x = backgroundPositionXOffset;
 	       	var modifiedX = (4 * x * x * x) 
-	       				  - (6 * x * x) 
-	       				  + (3 * x);
+	       		      - (6 * x * x) 
+	       		      + (3 * x);
 
 	       	//make it so the y axis tends towards the edges
 	        var y = backgroundPositionYOffset;
 			var modifiedY = (1/2) 
-						  + (0.205 * ((2 * y) - 1)) 
-						  * (4 - ((Math.pow(Math.pow((((14*y) -7) /10),2), (1/3)))) - (2 *((Math.pow(Math.pow(	(((14*y) -7) /10),8), (1/3))))));
+				      + (0.205 * ((2 * y) - 1)) 
+				      * (4 - ((Math.pow(Math.pow((((14*y) -7) /10),2), (1/3)))) - (2 *((Math.pow(Math.pow(	(((14*y) -7) /10),8), (1/3))))));
 
 			//determine percentage values for each gradient.
 			//point 1 is always 0%, point 5 is always 100%;
