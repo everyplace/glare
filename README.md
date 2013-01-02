@@ -12,3 +12,9 @@ Usage:
 //apply glare to the entire web page
 $('body').glare();
 ```
+
+Advanced Usage:
+```
+//Output a mess of debug options
+$('body').glare({debug:true});
+```
