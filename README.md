@@ -1,5 +1,5 @@
-Attempting to simulate the experience of having screen glare on your iphone.
-============================================================================
+Solar Interference Visualization Simulation
+===========================================
 
 Release Notes:
 * Only works on devices that fire the "devicemotion" event
