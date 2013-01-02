@@ -63,7 +63,7 @@
 	        var stopRadialPercentage = ((modifiedX * 100) > 50) ? 100 - (modifiedX * 100) : (modifiedX * 100);
 
 	        //apply the masks
-	        //TODO: figure out why jquery sucks at gradients with returns, to make this more legible
+	        //TODO: figure out why jquery sucks at gradients with line-breaks, to make this more legible
 	        $("body").css(
 	        	{
 	        		'-webkitMaskImage': "-webkit-gradient(linear, left top, left bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedYb+", rgba("+rgbString+","+stopAlpha+")), color-stop("+modifiedYa+", rgba("+rgbString+",1)), color-stop("+modifiedYc+", rgba("+rgbString+","+stopAlpha+")), color-stop(1, rgba("+rgbString+",0))),-webkit-gradient(linear, left bottom, right bottom, color-stop(0, rgba("+rgbString+",0)), color-stop("+modifiedXb+", rgba("+rgbString+","+stopAlpha+")), color-stop("+modifiedX+", rgba("+rgbString+",1)), color-stop("+modifiedXc+", rgba("+rgbString+","+stopAlpha+")), color-stop(1, rgba("+rgbString+",0))), -webkit-radial-gradient("+intersectionX+"px "+intersectionY+"px, ellipse cover, rgba(0,0,0,1) 0%,rgba(0,0,0,0) "+stopRadialPercentage+"%,rgba(0,0,0,0) 100%)"
