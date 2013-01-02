@@ -1,0 +1,16 @@
+* {	
+	margin:0; padding:0; 
+}
+html{ 
+	min-height:100%; 
+	background-color:gray; 
+}
+
+body {
+	background-color:white;
+	min-height:444px;
+}
+
+#data {
+	background-color:white;
+}
